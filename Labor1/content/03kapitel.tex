@@ -9,31 +9,63 @@ Für dieses Experiment benötigen wir die Folgenden Geräte:
     \hline
     Oszilloskop & 1  & Keysight DSOX1102A\\
     \hline
-    % Frequenzgenerator & 1 & TELEDYNE T3AFG80\\
-	% \hline 
+    Frequenzgenerator & 1 & TELEDYNE T3AFG80\\
+	\hline 
 	Digital-Multimeter & 1 & Fluke TRUE RMS MULTIMETER\\
-	\hline 
-	Widerstand 1k & 9 &  \\
-	\hline 
-	Widerstand 10k & 1 &  \\
 	\hline
-	LED & 8 & \\
+	DAC & 1 & ZN429E \\
 	\hline
-	DAC & 1 &  \\
+	D-Flip-Flop & 1 & \\
 	\hline
-	Kondesator 0,1 $\mu$F & 2 & \\
-	\hline
-	Kondesator 10 $\mu$F & 1 & \\
-	\hline
-	Kondesator 150 pF & 1 & 
-        \label{tab:Materialliste Versuch 1}
+    \label{tab:Materialliste Versuch 2}
 \end{tabular}
 
-\section{Änderungen im Vergleich zu Versuch 1}
 
-Zunächst einmal wird nun nur noch eine Referenzspannung von 2,56V 
-(anstatt 5,12V)
+\section{Versuchsaufbau}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/schaltungsskizze-versuch-zwei.jpeg} 
+	\caption[]{Schaltungsskizze Versuch 2}
+\end{figure}
+Durch die Verbindung von D mit !Q erreichet man eine aufsteigende Flanke
+in einem Interval von 0,1ms. 
 
-\section{Audbau der Schaltung}
+XXXXXXXXXXXXX Vref wurde angegeben
+
+XXXXXXXXXXXXX Kondesator brauch man nicht.
+
 \section{Monotonie und Nichtlinearität}
+einfügen excel tabelle
+erklären 5. Bit kaputt
+
+
+Aus dem Datenblatt kann man ablesen, dass die Ausgangsimpedanz vom
+DAC 10k$\Omega$ beträgt.
+
+
+
 \section{Einschwingverhalten}
+
+Zunächst einmal wurde der defekte DAC ausgetauscht 
+gegen einen voll-funktionsfähigen. \newline
+
+Die Frequenz der Alternierung des Flip-Flops ändert man zunächst nicht. \newline
+
+Zum messen des Einschwingverhaltens legt man 2 Bitsprünge fest.
+Einerseits den Bitsprung von 0000 0000 -> 0000 0001 und andererseits 
+den Bitsprung von 0000 0000 -> 1111 1111.
+Diese Werte eigenen sich gut, da hier im Datenblatt vom Hersteller 
+zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.\newline
+
+Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
+
+
+\begin{tabular}[h]{c|c}
+    Bitsprung & Einschwingzeit \\
+    \hline
+    00000 0000 -> 0000 0001 & 540ns\\
+    \hline
+    0000 0000 -> 1111 1111 & 800ns \\
+
+\end{tabular}
+
