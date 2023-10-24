@@ -22,6 +22,7 @@ Für dieses Experiment benötigen wir die Folgenden Geräte:
 
 
 \section{Versuchsaufbau}
+\label{sec:Versuchsaufbau}
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=7cm]{images/schaltungsskizze-versuch-zwei.jpeg} 
@@ -31,19 +32,55 @@ Durch die Verbindung von $D\neg Q$ erreichet man eine aufsteigende Flanke
 in einem Interval von 0,1ms. Hierbei ist zu beachten, dass $0,1ms \stackrel{^\wedge}{=} 1kHz$. 
 Eine Halbierung der Frequenz im Vergleich zum Frequenzgenerator geschieht hier.
 
+Der Spannungsberreich des DAC beträgt 0-2,55V, wobei 0V für 0000 0000 
+und 2,55V für 1111 1111 steht. Ein LSB entspricht hierbei 10mV.
+
 Die Referenzspannung kann aus dem Datenblatt abgelesen werden. Unter dem 
 Parameter 'Full-scale output' ist eine Referenzspannung von 2,56V angegeben.
 
 XXXXXXXXXXXXX Kondesator brauch man nicht.
 
-\section{Monotonie und Nichtlinearität}
-XXXXXXXXXXXXX 
-einfügen excel tabelle
-erklären 5. Bit kaputt
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/versuch2-schaltungsaufbau.jpeg} 
+	\caption[]{Schaltungsaufbau Versuch 2}
+\end{figure}
 
+
+
+\section{Monotonie und Nichtlinearität}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=6cm]{images/versuch2-monotonie-and-nichtlinearitaet.png} 
+	\caption[]{Monotonieverhalten}
+    \label{fig: Monotonieverhalten}
+\end{figure}
+
+Zu Vergleichen ist 
+\[
+\sum_{n=0}^{7} 2^n
+\]
+jeweils mit 
+\[
+\sum_{n=0}^{7} 2^n -1
+\] als entsprechenden binärer Wert (siehe Abbildung \ref{fig: Monotonieverhalten})\newline
+Unseren Ergebnissen kann man entnehmen, dass der DAC nicht
+monoton ist. Bei genauerer Betrachtung fällt auf, dass das 5.
+Bit kaputt ist und keine Spannung ausgibt. Grund hierfür ist 
+vermutlich ein Versagen des Schalters im R-2R DAC.
+Bei den nachfolgend getesteten Bitsprüngen sieht man, dass zu den
+10 mV des eigentlichen Bitsprungs noch 160 mV hinzukommen, da 0001 0000
+genau 160 mV entspricht.
+
+Ein LSB entspricht wie in Kapitel \ref{sec:Versuchsaufbau} beschrieben 10mV.
 
 Aus dem Datenblatt kann man ablesen, dass die Ausgangsimpedanz vom
-DAC 10k$\Omega$ beträgt.
+DAC 10k$\Omega$ beträgt. Aufgrund einer so hohen Ausgangsimpedanz 
+können Spannungsabfälle auftreten welche zu Signalverlusten führen 
+könnten. Des weiteren können nachgeschaltene Bauteile mit niedriger
+Eingangsimpedanz Signalverluste erleiden.
+
 
 
 
@@ -63,12 +100,13 @@ zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.\ne
 Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
 
 
-\begin{tabular}[h]{c|c}
-    Bitsprung & Einschwingzeit \\
+\begin{tabular}[h]{c|c|c}
+    Bitsprung & Einschwingzeit & Angabe des Datenblatts \\
     \hline
-    00000 0000 -> 0000 0001 & 540ns\\
+    00000 0000 -> 0000 0001 & 540ns & 1000ns\\
     \hline
-    0000 0000 -> 1111 1111 & 800ns \\
-
+    0000 0000 -> 1111 1111 & 800ns & 2000ns\\
 \end{tabular}
+
+Die Abweichung zum Datenblatt liegt hier noch im gewöhnlichen Bereich. 
 
