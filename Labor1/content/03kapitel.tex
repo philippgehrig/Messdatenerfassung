@@ -3,23 +3,24 @@
 \section{Benötigte Geräte}
 
 Für dieses Experiment benötigen wir die Folgenden Geräte:
-
-\begin{tabular}[h]{c|c|c}
-    Gerät & Anzahl & Produktbeeichnung\\
-    \hline
-    Oszilloskop & 1  & Keysight DSOX1102A\\
-    \hline
-    Frequenzgenerator & 1 & TELEDYNE T3AFG80\\
-	\hline 
-	Digital-Multimeter & 1 & Fluke TRUE RMS MULTIMETER\\
-	\hline
-	DAC & 1 & ZN429E \\
-	\hline
-	D-Flip-Flop & 1 & \\
-	\hline
-    \label{tab:Materialliste Versuch 2}
-\end{tabular}
-
+\begin{table}[h]	
+	\centering
+	\begin{tabular}[h]{c|c|c}
+		Gerät & Anzahl & Produktbeeichnung\\
+		\hline
+		Oszilloskop & 1  & Keysight DSOX1102A\\
+		\hline
+		Frequenzgenerator & 1 & TELEDYNE T3AFG80\\
+		\hline 
+		Digital-Multimeter & 1 & Fluke TRUE RMS MULTIMETER\\
+		\hline
+		DAC & 1 & ZN429E \\
+		\hline
+		D-Flip-Flop & 1 & 
+	\end{tabular}
+	\caption{Materialliste Versuch 2}
+	\label{tab:Materialliste Versuch 2}
+\end{table}
 
 \section{Versuchsaufbau}
 \label{sec:Versuchsaufbau}
@@ -52,7 +53,7 @@ XXXXXXXXXXXXX Kondesator brauch man nicht.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=6cm]{images/versuch2-monotonie-and-nichtlinearitaet.png} 
+	\includegraphics[height=5cm]{images/versuch2-monotonie-and-nichtlinearitaet.png} 
 	\caption[]{Monotonieverhalten}
     \label{fig: Monotonieverhalten}
 \end{figure}
@@ -88,25 +89,31 @@ Eingangsimpedanz Signalverluste erleiden.
 
 Zunächst einmal wurde der defekte DAC ausgetauscht 
 gegen einen voll-funktionsfähigen. \newline
-
 Die Frequenz der Alternierung des Flip-Flops ändert man zunächst nicht. \newline
-
 Zum messen des Einschwingverhaltens legt man 2 Bitsprünge fest.
 Einerseits den Bitsprung von 0000 0000 -> 0000 0001 und andererseits 
 den Bitsprung von 0000 0000 -> 1111 1111.
 Diese Werte eigenen sich gut, da hier im Datenblatt vom Hersteller 
 zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.\newline
-
 Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
 
+\begin{table}[h]
+	\centering
+	\begin{tabular}[h]{c|c|c|c}
+		Bitsprung & 90\% [in ns] & 100\% [in ns] & Angabe Datenblatt [in ns] \\
+		\hline
+		00000 0000 -> 0000 0001 & 540 & 1592 & 1000\\
+		\hline
+		0000 0000 -> 1111 1111 & 830 & 1448 & 2000\\
+	\end{tabular}
+	\caption{Einschwingverhalten in Prozent}
+	\label{tab:Einschwingverhalten}
+\end{table}
 
-\begin{tabular}[h]{c|c|c}
-    Bitsprung & Einschwingzeit & Angabe des Datenblatts \\
-    \hline
-    00000 0000 -> 0000 0001 & 540ns & 1000ns\\
-    \hline
-    0000 0000 -> 1111 1111 & 800ns & 2000ns\\
-\end{tabular}
+Die Abweichung zum Datenblatt liegt hier im gewöhnlichen Bereich.
+Die genauen Ausmessungen vomn Oszilloskop sind im Anhang A bis D zu finden.
+Allerdings ist es hier fragwürdig, warum die Einschwingzeit für 100\% in der
+zweiten Versuchsreihe kürzer ist als in der ersten. Dies liegt vermutlich an
+einem Messfehler. \newline 
 
-Die Abweichung zum Datenblatt liegt hier im gewöhnlichen Bereich. 
 
