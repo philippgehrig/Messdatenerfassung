@@ -11,7 +11,7 @@ Für dieses Experiment benötigen wir die Folgenden Geräte:
     \hline
     % Frequenzgenerator & 1 & TELEDYNE T3AFG80\\
 	% \hline 
-	Digital-Multimeter & 1 & Fluke TRUE RMS MULTIMETER\\
+	Digital-Multimeter & 1 & Fluke 87V TRUE RMS MULTIMETER\\
 	\hline 
 	Widerstand 1k$\Omega$ & 9 &  \\
 	\hline 
@@ -35,17 +35,18 @@ Für dieses Experiment benötigen wir die Folgenden Geräte:
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=7cm]{images/Schaltungsskizze-versuch-eins.jpg} 
-	\caption[]{Schaltungsskizze Versuch 1}
+	\caption[]{Schaltungsskizze}
+	\label{fig: Schaltungsskizze}
 \end{figure}
 
-Zunächst einmal die Schlatungsskizze (Abbildung 2.1) für unseren Versuchsaufbau.
+Zunächst einmal die Schlatungsskizze (Abbildung \ref{fig: Schaltungsskizze}) für unseren Versuchsaufbau.
 
 Aufgrund des Fehlen des Schalters haben wir diesen durch ein Kabel ersetzt, welches 
 durch einstecken in das Steckbord den Schalter simuliert. \par
 
 Man geht zunächst einmal davon aus, dass die Clockfrequenz des ADC 600 kHz beträgt.\par
 Bei der Verschaltung sollte man beachten, dass die Eingangspins 1 - 5, 10, 19 und 20 
-haben digitale Referenzwerte, wobei die Eingangspins 6 - 9 haben analoge Referenzwerte.\par
+haben digitale Referenzwerte, wobei die Eingangspins 6 - 9 - analoge.\par
 Der V(+)-Eingang muss mit einem Schutzwiderstand 1 k\textOmega  gegen Überspannungen 
 und mit einem 0.1 \textmu F gegen Einstreuungen versehen werden. \par
 
@@ -53,30 +54,50 @@ Die Betriebs- und Eingangsspannungen werden mit Hilfe des \acs{DMM} gemessen, um
 genau zu bestimmen.\par
 Das Bitmuster wird von den \acs{LED}s in binärer Darstellung abgelesen. Ein \acs{LSB} beträgt 20 mV.\par
 Die Versorgungsspannung für den Versuch liege bei 5,120V. Diese definiert den 
-Eingangsspannungsbereich U\textsubscript{in}: 0 bis 5,120 V. \newline
+Eingangsspannungsbereich U\textsubscript{in}: 0 bis 5,120V. \newline
 
 
-Die Schaltung wurde aufgebaut und von einem Betreuer überprüft.
+Die Schaltung wurde aufgebaut und von einem Betreuer überprüft. Danach wird die Schaltung
+mit V\textsubscript{dc} ca. 5,133V in Betrieb genommen. \par
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=7cm]{images/Schaltungsaufbau-versuch-eins.jpeg} 
-	\caption[]{Schaltungsaufbau Versuch 1}
+	\caption[]{Schaltungsaufbau}
+	\label{fig: Schaltungsaufbau}
 \end{figure}
 
-Der digitale Output der Schaltung wird von den \acs{LED}s in Abbildung 2.2 dargestellt.
+Der digitale Output der Schaltung wird von den \acs{LED}s in Abbildung 
+\ref{fig: Schaltungsaufbau} dargestellt.
 Bei der Inbetriebnahme wurde festgestellt, dass die Signale invertiert sind, 
 und der Zustand An einer Null entspricht, der Zustand Aus - einer Eins.
 
 \section{Integrale Nichtlinearität}
 
+In disem Abschnitt soll die Integrale Nichtlinearität in dem gesamten Bereich gemessen
+werde. Dafür soll die Eingangsspannung in 16 gleich große Bereiche unterteilt werden, was 
+320mV Stufen ergibt. Man fährt jeweils die Breichsgrenze von unten an und protokolliert 
+die für den Bitsprung notwendige Eingangsspannung in einer Tabelle.
+
 
 \begin{table}[H]
 	\centering
-	\includegraphics[height=7cm]{images/Versuch-1d.pdf} 
-	\caption[]{Ergebnisse Versuch 1d}
+	\includegraphics[height=6.2cm]{images/Versuch1d.pdf} 
+	\caption[]{Ergebnisse Integrale Nichtlinearität}
+	\label{fig: Ergebnisse Integrale Nichtlinearität}
 \end{table}
 
-TEXT EINFUGEN
+Anhand der erwarteten und tatsächlichen Werte wird die Abweichung in V und Prozent
+ berechnet.
+
+
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/INL_gerade.png} 
+	\caption[]{INL erwartete und tatsächliche Werte}
+	\label{fig: INL erwartete und tatsächliche Werte}
+\end{figure}
 
 \section{Differentiale Nichtlinearität}
 \section{Konversionszeit}
