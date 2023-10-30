@@ -67,14 +67,14 @@ Zu Vergleichen ist
 jeweils mit 
 \[
 \sum_{n=0}^{7} 2^n -1
-\] als entsprechenden binärer Wert (siehe Abbildung \ref{fig: Monotonieverhalten})
-Unseren Ergebnissen kann man entnehmen, dass der DAC nicht
+\] als entsprechenden binärer Wert (siehe Abbildung \ref{fig: Monotonieverhalten}).
+Den Ergebnissen kann man entnehmen, dass der DAC nicht
 monoton ist. Bei genauerer Betrachtung fällt auf, dass das 5.
 Bit kaputt ist und keine Spannung ausgibt. Grund hierfür ist 
 vermutlich ein Versagen des Schalters im R-2R DAC.
 Bei den nachfolgend getesteten Bitsprüngen sieht man, dass zu den
 10 mV des eigentlichen Bitsprungs noch 160 mV hinzukommen, da 0001 0000
-genau 160 mV entspricht.Die Werte des Oszilloskop sind im Anhang A bis H zu finden.
+genau 160 mV entspricht. Die Werte des Oszilloskop sind im Anhang A bis H zu finden.
 Ein LSB entspricht wie in Kapitel \ref{sec:Versuchsaufbau} beschrieben 10mV.
 
 Aus dem Datenblatt kann man ablesen, dass die Ausgangsimpedanz vom
@@ -96,7 +96,10 @@ Einerseits den Bitsprung von 0000 0000 -> 0000 0001 und andererseits
 den Bitsprung von 0000 0000 -> 1111 1111.
 Diese Werte eigenen sich gut, da hier im Datenblatt vom Hersteller 
 zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.
-Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
+Als Scope am Oszilloskop stellt man 200ns/div ein. \par
+Man führt zwei Messungen durch: die Zeit, die zur Erreichung eines stabilen Wertes
+in Höhe von 90\% des Gesamtwertes gebraucht wird, und die Zeit, die zur
+Erreichung der vollen Einschwingung gebraucht wird.
 
 \begin{table}[h]
 	\centering
@@ -112,9 +115,9 @@ Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
 \end{table}
 
 Die Abweichung zum Datenblatt liegt hier im gewöhnlichen Bereich.
-Die genauen Ausmessungen vomn Oszilloskop sind im Anhang I bis J zu finden.
+Die genauen Ausmessungen vom Oszilloskop sind im Anhang I bis J zu finden.
 Allerdings ist es hier fragwürdig, warum die Einschwingzeit für 100\% in der
 zweiten Versuchsreihe kürzer ist als in der ersten. Dies liegt vermutlich an
-einem Messfehler. \newline 
+einem Messfehler. 
 
 
