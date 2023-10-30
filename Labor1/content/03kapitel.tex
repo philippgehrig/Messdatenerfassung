@@ -37,10 +37,8 @@ Oszillierung ändern.
 Durch die Verbindung von $D\neg Q$ erreichet man eine aufsteigende Flanke
 in einem Interval von 0,1ms. Hierbei ist zu beachten, dass $0,1ms \stackrel{^\wedge}{=} 1kHz$. 
 Eine Halbierung der Frequenz im Vergleich zum Frequenzgenerator geschieht hier.
-
 Der Spannungsberreich des DAC beträgt 0-2,55V, wobei 0V für 0000 0000 
 und 2,55V für 1111 1111 steht. Ein LSB entspricht hierbei 10mV.
-
 Die Referenzspannung kann aus dem Datenblatt abgelesen werden. Unter dem 
 Parameter 'Full-scale output' ist eine Referenzspannung von 2,56V angegeben.
 
@@ -69,7 +67,7 @@ Zu Vergleichen ist
 jeweils mit 
 \[
 \sum_{n=0}^{7} 2^n -1
-\] als entsprechenden binärer Wert (siehe Abbildung \ref{fig: Monotonieverhalten})\newline
+\] als entsprechenden binärer Wert (siehe Abbildung \ref{fig: Monotonieverhalten})
 Unseren Ergebnissen kann man entnehmen, dass der DAC nicht
 monoton ist. Bei genauerer Betrachtung fällt auf, dass das 5.
 Bit kaputt ist und keine Spannung ausgibt. Grund hierfür ist 
@@ -91,13 +89,13 @@ Eingangsimpedanz Signalverluste erleiden.
 \section{Einschwingverhalten}
 
 Zunächst einmal wurde der defekte DAC ausgetauscht 
-gegen einen voll-funktionsfähigen. \newline
-Die Frequenz der Alternierung des Flip-Flops ändert man zunächst nicht. \newline
-Zum messen des Einschwingverhaltens legt man 2 Bitsprünge fest.
+gegen einen voll-funktionsfähigen.
+Die Frequenz der Alternierung des Flip-Flops ändert man zunächst nicht.
+Zur Messung des Einschwingverhaltens legt man 2 Bitsprünge fest.
 Einerseits den Bitsprung von 0000 0000 -> 0000 0001 und andererseits 
 den Bitsprung von 0000 0000 -> 1111 1111.
 Diese Werte eigenen sich gut, da hier im Datenblatt vom Hersteller 
-zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.\newline
+zwei Referenzwerte gegeben sind, welche man nun zum Vergleich verwenden kann.
 Als Scope am Oszilloskop stellt man 200ns/div ein. \newline
 
 \begin{table}[h]
