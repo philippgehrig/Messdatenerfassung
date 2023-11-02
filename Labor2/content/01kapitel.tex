@@ -1,21 +1,46 @@
-%!TEX root = ../dokumentation.tex
-\chapter{Einführung und Überblick}
-Zunächst wurden zur Vorbereitung des Labors alle Messgeräte und Komponenten auf ihre Korrektheit geprüft.
-Dies bestand aus der Kalibrierung des Oszilloskops. 
-Der Kurzschlussstrom wurde auf 400 mA begrenzt.\newline
-Für unsere Versuche verwenden wir das Oszilloskop: Keysight DSOX1102A, \newline
-den digitalen Multimeter: Fluke TRUE RNS MULTIMETER.\newline
-sowie das Netzgerät: GW INSTEK GPS-4303.\newline \newline
-Des weiteren wurde sich auf folgende Farben für Kabel geeinigt.
+\chapter{Versuch 1: Kapazitätsmessung eines unbekannten Kondensators}
+
+\section{Vorbereitung}
+\subsection*{Benötigte Geräte}
 
 \begin{tabular}[h]{c|c}
-    Farbe & Bedeutung\\
+    Kondensators unbekannter Größe & unbekannt \\
     \hline
-    Rot & Versorgungsspannung \\
+    Widerstand 4,7 k$\Omega$& \\
     \hline
-    Schwarz & Digitale Masse \\
+    Funktionsgenerator & T3AFG80\\
     \hline
-    Gelb & Analoge Masse 
-        \label{tab:Farbenzuordnung}
-   \end{tabular}
+    Digital-Multimeter & Fluke TRUE RNS MULTIMETER\\
+    \hline
+    Oszilloskop & Keysight DSOX1102A
+    \label{tab:Versuch 1: Geräte}
+\end{tabular}
+
+\subsection*{Ziel des Versuchs}
+Für einen unbekannten Kondensator ist ein Bereich 1nF <= C\textsubscript{x} <= 10nF 
+angegeben. Ziel dieses versuches ist es, die kapazität des Kondensators genauer
+zu bestimmen und eine Fehlerrechnung durchzuführen.
+
+\section{Versuchsdurchführung}
+
+Zunächst wurde der im Datenblatt angegebene Wiederstand von 4,7 k$\Omega$ 
+mit dem Digital-Multimeter überprüft. Dieser lag mit 4,583 k$\Omega$ im 
+Toleranzbereich von 5\%. Für den Kondensator war BlackBox 27.
+
+Zur Brrechnung des wird die Formel für die Kapazität eines Kondensators verwendet:
+\begin{equation}
+    Q(t) = C \cdot V \left(1 - e^{-\frac{t}{RC}}\right)
+\end{equation}
+
+XXXXXX Abbildung Funktion XXXXXX
+
+\subsection*{Versuchsaufbau}
+
+XXXXXX Abbildung Versuchsaufbau XXXXXX
+
+\subsection*{Bestimmung der Kapazität}
+
+\section{Fehlerrechnung}
+
+
 
