@@ -3,8 +3,10 @@
 \section{Vorbereitung}
 \subsection{Benötigte Geräte}
 
+Für den Versuch werden folgende Geräte benötigt
+
 \begin{tabular}[h]{c|c}
-    Kondensators unbekannter Größe & unbekannt \\
+    Kondensators unbekannter Größe (1nF $\le$ C\textsubscript{x} $\le$ 10nF) \\
     \hline
     Widerstand 4,7 k$\Omega$& \\
     \hline
@@ -17,30 +19,115 @@
 \end{tabular}
 
 \subsection{Ziel des Versuchs}
-Für einen unbekannten Kondensator ist ein Bereich 1nF <= C\textsubscript{x} <= 10nF 
-angegeben. Ziel dieses versuches ist es, die kapazität des Kondensators genauer
-zu bestimmen und eine Fehlerrechnung durchzuführen.
+Für einen unbekannten Kondensator in einer BlackBox ist ein Bereich der Kapazität
+1nF$\le$C\textsubscript{x}$\le$10nF angegeben. Ziel dieses Versuches ist es, 
+die Kapazität des Kondensators genau zu bestimmen und eine Fehlerrechnung durchzuführen.
+
+
 
 \section{Versuchsdurchführung}
 
-Zunächst wurde der im Datenblatt angegebene Wiederstand von 4,7 k$\Omega$ 
-mit dem Digital-Multimeter überprüft. Dieser lag mit 4,583 k$\Omega$ im 
-Toleranzbereich von 5\%. Für den Kondensator war BlackBox 27.
+
+\subsection{Ladekurve des Kondensators}
+Der Kondensator hat eine Ladekurve, die mit der Gleichung 
+\[U\textsubscript{C} = U\textsubscript{0} \left(1 - e^{-\frac{t}{\tau}}\right), \tau=RC\]
+beschrieben werden kann.\par
+Die Ladekurve sieht folgendermaßen aus: 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Ladekurve_zeichnung.pdf} 
+	\caption{Ladekurve des Kondensators}
+	\label{fig: Ladekurve des Kondensators}
+\end{figure}
+
+Nach einem $\tau$ erreicht der Kondensator 62.3\% seiner maximalen Spannung. 
+
+\subsection{Erstellen einer Schaltung}
+
+Man erstellt eine Schaltung, mit der das Lade- und Entladeverhalten des Kondensators
+mit dem Oszilloskop beobachtet werden kann. Dafür wird der Frequenzgenerator
+durch den Vorwiderstand R\textsubscript{V} mit dem Kondensator verbunden.
+Die Messung erfolgt mit dem Oszilloskop parallel zum Kondensator, 
+die Masseklemme des Tastkopfs sollte möglichst nah an dem Frequenzgenerator
+platziert werden.
+
+Dadurch, dass man den Kondensator direkt mit U\textsubscript{max} aufladen
+muss, verwendet man den Rechtecksignal. Die Amplitude des Signals liege 
+im Intervall zwischen ca. 3 und 10 Vpp. Man verwendet hier kein Offset.
+Resümierend, entsteht hier folgende Schaltung:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5cm]{images/Versuch1/Schaltbild_versuch1.pdf} 
+	\caption{Schaltskizze}
+	\label{fig: Schaltskizze}
+\end{figure}
+
+Der nahezu vollständie Ladevorgang dauert ca. 5 $\tau$. Basierend darauf kann
+man den Intervall für die im Schaltung verwendete Frequenz berechnen:
+
+\[
+    f = \frac{1}{5\tau} \hspace{0.5cm} \text{mit} \hspace{0.2cm} \tau = RC
+\]
+
+Für C = 1 nF gilt:
+\[
+    \tau =4700 \Omega*10^{-9}F = 4,7*10^{-6}s
+\]
+
+Für C = 10 nF gilt:
+\[
+    \tau =4700 \Omega * 10*10^{-9}F = 4,7*10^{-5}s
+\]
+
+Somit gilt für die Frequenz: \[ f \in I=[4255Hz; 42553Hz] \]
+
+\subsection{Versuchsaufbau und Messung}
+Vor der Aufbau wird der im Versuchsberschreibung angegebene Wiederstand 
+von 4,7 k$\Omega$ mit dem Digital-Multimeter überprüft. Dieser liegt 
+mit 4,583 k$\Omega$ im Toleranzbereich von 5\%. 
+
+Mit dem BlackBox 27 baut man die Schaltung auf. Es resultiert folgende Anordung:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Versuch1_schaltung_gebaut.jpg} 
+	\caption{Schaltung}
+	\label{fig: Schaltung}
+\end{figure}
+
+In der Anordung wird ein Rechtecksignal mit der Frequenz 10 kHz, 
+der Amplitude 6 Vpp, keinem Offset und Duty 50\% verwendet.
+
+Es wird folgende Ladekurve am Oszilloskop beobachtet:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Ladekurve_voll_6021V.png} 
+	\caption{Ladekurve}
+	\label{fig: Ladekurve}
+\end{figure}
+
+Man beachte, dass trotz angestellter Amplitude in Höhe von
+6 Vpp, wird am Oszilloskop 6,21 V Amplitude angezeigt. Mit dieser 
+Information wird die Zeitkonstante $\tau$ berechnet. Man kalkuliert
+63,2\% von der Amplitude: $6,21V * 0,632 = 3,924V$. Man stellt die 
+Y-Cursor auf diese Spannung und misst mit den X-Cursor die Zeit:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Zeitmessung.png} 
+	\caption{Zeitmessung}
+	\label{fig: Zeitmessung}
+\end{figure}
+
+Es ergeben sich 7,08 $\mu$S für die Zeitkonstante $\tau$. 
+
+\subsection{Bestimmung der Kapazität}
+
+
+
+\section{Fehlerrechnung}
+
 
 Zur Brrechnung des wird die Formel für die Kapazität eines Kondensators verwendet:
 \begin{equation}
     Q(t) = C \cdot V \left(1 - e^{-\frac{t}{RC}}\right)
 \end{equation}
-
-XXXXXX Abbildung Funktion XXXXXX
-
-\subsection{Versuchsaufbau}
-
-XXXXXX Abbildung Versuchsaufbau XXXXXX
-
-\subsection{Bestimmung der Kapazität}
-
-\section{Fehlerrechnung}
-
-
-
