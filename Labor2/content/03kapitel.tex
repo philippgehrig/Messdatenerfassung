@@ -91,7 +91,7 @@ zweite Widerstand. Die Schaltskizze sieht folgendermaßen aus:
 
 Mit Hilfe des DMMs wird die Spannung gemessen. Diese beträgt 4,964 V. Mit der
 Formel $P = (\frac{U}{R\textsubscript{V}})^{2}R$ wird die Leistung bestimmt: 
-\[P = (\frac{4,954 V}{0,985 k\Omega})^{2}\cdot 0,996k\Omega = 0,02519 W = 25,19 mW\].
+\[P = (\frac{4,954 V}{0,985 k\Omega})^{2}\cdot 0,996k\Omega = 0,02519 W = 25,19 mW\]
 
 \subsubsection{Fehlerrechnung}
 Fehler durch Widerstandsmessung mit Fluke DMM (Daten aus dem Datenblatt des Fluke DMMs):\\
@@ -110,16 +110,43 @@ Absoluter Fehler: $\Delta U = \pm (0,05\% \cdot U + 1 LSD) = \pm 3,482 mV$\\
 Relativer Fehler: $\Delta U = \frac{\Delta U}{U} = \frac{3,482 mV}{4,964 V} = 0,07014\%$\\
 
 \subsubsection{Maximaler Gesamtfehler}
-\[
-    \begin{aligned}
-    |\Delta P| = |(\frac{U}{R_V})^2| \cdot \Delta R_1 + \abs{-2 \cdot \frac{U^2 \cdot R_1}{R_V^3}} \cdot \Delta R_V + |2 \cdot \frac{U \cdot R_1 }{R_V^2}| \cdot \Delta U = \\
-    \frac{U^2}{R_V^2} \cdot R_1 \cdot (2 \cdot \frac{\Delta R_V}{R_V} + 2 \cdot \frac{\Delta U}{U} + \frac{\Delta R_1}{R_1}) = 
-    P \cdot (2 \cdot \frac{\Delta R_V}{R_V} + 2 \cdot \frac{\Delta U}{U} + \frac{\Delta R_1}{R_1}) = \\
-    25,19 mW \cdot (2 \cdot 0,1215\% + 2 \cdot 0,07014\% + 0,1204\%)  = 0,1268 mW
-    \end{aligned}
-\]
+\begin{flalign*}
+    |\Delta P| & = |(\frac{U}{R_V})^2| \cdot \Delta R_1 + \abs{-2 \cdot \frac{U^2 \cdot R_1}{R_V^3}} \cdot \Delta R_V + |2 \cdot \frac{U \cdot R_1 }{R_V^2}| \cdot \Delta U \\
+    & =\frac{U^2}{R_V^2} \cdot R_1 \cdot (2 \cdot \frac{\Delta R_V}{R_V} + 2 \cdot \frac{\Delta U}{U} + \frac{\Delta R_1}{R_1})
+    = P \cdot (2 \cdot \frac{\Delta R_V}{R_V} + 2 \cdot \frac{\Delta U}{U} + \frac{\Delta R_1}{R_1}) \\
+    & = 25,19 mW \cdot (2 \cdot 0,1215\% + 2 \cdot 0,07014\% + 0,1204\%)  = 0,1268 mW
+\end{flalign*}
 
-$\frac{\Delta P}{P} = \frac{0,1268 mW}{25,19 mW} = 0,5033\%$
+\begin{flalign*}
+    & \frac{\Delta P}{P} = \frac{0,1268 mW}{25,19 mW} = 0,5033\%
+\end{flalign*}
 
 \subsubsection{Wahrscheinlicher Felher}
+\begin{flalign*}
+    \abs{P} & = P \cdot \sqrt{(2 \cdot \frac{\Delta R_V}{R_V})^2 + (2 \cdot \frac{\Delta U}{U})^2 + (\frac{\Delta R_1}{R_1})^2} \\
+    & = 25,19 mW \cdot \sqrt{(2 \cdot 0,1215\%)^2 + (2 \cdot 0,07014\%)^2 + (0,1204\%)^2} = 0,07691 mW
+\end{flalign*}
 
+\begin{flalign*}
+    & \frac{\Delta P}{P} = \frac{0,07691 mW}{25,19 mW} = 0,3053\%
+\end{flalign*}
+
+\subsection{Vergleich der Ergebnisse}
+
+
+
+\begin{tabular}[h]{c|c|c}
+    & Direkte Strommessung & Indirekte Strommessung \\
+    \hline
+    Leistung & 24,99 mW & 25,19 mW \\
+    \hline
+    Maximaler Fehler & 0,6002\% & \cellcolor{green!50}0,5033\% \\
+    \hline
+    Wahrscheinlicher relativer Fehler & 0,4946\% & \cellcolor{green!50}0,3053\% 
+    \label{tab:Versuch 3: Ergebnisse}
+\end{tabular}
+
+
+Die Übersicht zeigt, dass die indirekte Strommessung zu einem genaueren Ergebnis
+führt. Dies liegt daran, dass die Fehler der Spannungs- und Widerstandsmessung
+geringer sind, als die Fehler der Strommessung.
