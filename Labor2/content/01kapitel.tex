@@ -118,16 +118,48 @@ Y-Cursor auf diese Spannung und misst mit den X-Cursor die Zeit:
 	\label{fig: Zeitmessung}
 \end{figure}
 
-Es ergeben sich 7,08 $\mu$S für die Zeitkonstante $\tau$. 
+Es ergeben sich 7,08 $\mu$S für die Zeitkonstante $\tau$. Die
+Einstellungen des Oszilloskops sind folgende:
+y: 540 mV/div, x: 1,080 $\mu$s/div.
 
 \subsection{Bestimmung der Kapazität}
 
+Die Kapazität des Kondensators wird mit der Formel für die Zeitkonstante $\tau$
+berechnet:
+\[
+	\tau = R_{ges}C \Leftrightarrow C = \frac{\tau}{R}
+\], wobei $R_{ges}$ der Gesamtwiderstand der Schaltung ist
+($R_{ges} = R_{i} + R_{V} = 50\Omega + 4,583 k\Omega = 4,633 k\Omega$ ).
+Somit gilt für die Kapazität des Kondensators:
+\[
+	C = \frac{7,08 \mu s}{4,633 k\Omega} = 1,528 nF
+\]
 
 
 \section{Fehlerrechnung}
 
 
-Zur Berechnung des wird die Formel für die Kapazität eines Kondensators verwendet:
-\begin{equation}
-    Q(t) = C \cdot V \left(1 - e^{-\frac{t}{RC}}\right)
-\end{equation}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+
+
+	\centering
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{c|c|c|c|c|c}
+	Fehlerquelle                        					& Einfluss     		& Größe   					& Art         					& Berücksichtigen 							& Relevant            \\ \hline
+	R (4,7 k)                          						& DMM (Fluke 87)	& \textperthousand  		& statistisch 					& Fehlerrechnung  							& Ja                  \\ \hline
+	\multirow{5}{*}{Oszilloskop	(DSOX1102A) 7 Jahre alt}	& Ri           		& 10 M$\Omega$ $\pm 2\%$ 	& \multirow{2}{*}{systematisch} & \multirow{2}{*}{< 0,5 \textperthousand}   & \multirow{2}{*}{/}  \\ \cline{2-3}
+															& Ci           		& 16 pF $\pm 3pF$        	&             					&                 							&                     \\ \cline{2-6} 
+															& y            		& $\approx$ 3\%        		& \multirow{2}{*}{statistisch}  & \multirow{2}{*}{Fehlerrechnung}           & \multirow{2}{*}{Ja} \\ \cline{2-3} 
+															& x            		& nachrechnen!!!        	&             					&                							&                     \\ \cline{2-6} 
+															& Cursor       		& ablesen!!!        		& statistisch            		& Fehlerrechnung                			& Ja                  \\ \hline
+	\multirow{4}{*}{Funktionsgenerator} 					& Anstiegszeit		& $\approx$ ns       		& systematisch            		& $\approx$ 1 \textperthousand              & /                   \\ \cline{2-6} 
+															& Ri           		& 50 $\Omega$        		& systematisch            		& Korrektur                					& Ja                  \\ \cline{2-6} 
+															& $\Delta$Ri		& $\approx$ 1\%        		& statistisch            		& $\pm 0,5 \Omega$                			& /                   \\ \cline{2-6} 
+															& Amplitude/Offset	& Relativmessung!        	& Relativmessung!             	& /                							& /                   \\ \hline
+	Kabel und Steckverbindung           					& Widerstand   		& $\le$ 20m$\Omega$	        & systematisch            		& /                							& /              
+	\label{tab: Fehlerrechnung}
+
+\end{tabular}%
+}
+	
