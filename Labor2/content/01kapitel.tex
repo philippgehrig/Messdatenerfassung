@@ -139,12 +139,8 @@ Somit gilt für die Kapazität des Kondensators:
 \section{Fehlerrechnung}
 
 
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-
-
+\resizebox{\textwidth}{!}{%
 	\centering
-	\resizebox{\textwidth}{!}{%
 	\begin{tabular}{c|c|c|c|c|c}
 	Fehlerquelle                        					& Einfluss     		& Größe   					& Art         					& Berücksichtigen 							& Relevant            \\ \hline
 	R (4,7 k)                          						& DMM (Fluke 87)	& \textperthousand  		& statistisch 					& Fehlerrechnung  							& Ja                  \\ \hline
@@ -162,4 +158,30 @@ Somit gilt für die Kapazität des Kondensators:
 
 \end{tabular}%
 }
-	
+
+
+
+
+\section{Zusatzfragen}
+
+Durch das BNC Kabel und die Steckverbindung entsteht ein zusätzlicher 
+Widerstand von ca. 50 $\Omega$. Dieser Widerstand kann in der Fehlerrechnung
+kompensiert werden, indem man den Widerstand in der Schaltung um 50 $\Omega$
+kleiner auslegt.
+
+Wenn der Wert des Vorwiderstandes nicht gemessen wäre, sondern mit dem
+Nominalwert und Toleranz gerechnet werden würde, dann würde dies einen
+Einfluss auf die Kapazitätsmessung haben. Man rechne mit dem Nominalwert
+des Widerstandes und der Toleranz von 5\%:
+
+\[
+	R_{V} = 4,7 k\Omega \pm 5\% = 4,7 k\Omega \pm 235 \Omega
+\]
+
+Dieser Betrag ist größer als der gemessene Wert von 4,583 k$\Omega$.
+Dadurch erhöhrt sich der Gesamtwiderstand der Schaltung und somit
+auch der Fehler der Kapazitätsmessung:
+
+\[
+	\Delta C_1 = \frac{1}{4,7 k\Omega} \cdot  = 1,528 nF
+\]
