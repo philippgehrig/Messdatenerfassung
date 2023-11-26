@@ -121,8 +121,112 @@ Nun werden $C_1$ und $C_2(f)$ aus \ref{eq:AV2} bestimmt: \par
 Es gilt für $C_1$ = $\frac{R_2}{R_1}$,
  und für das frequenzabhängige $C_2(f)$ = $4 \pi^2 R_2 ^ 2 C^2$.
 
+\subsection{Berechnung der Frequenzbereichen}
+Um die Grenzfrequenz f\textsubscript{c} zu bestimmen, wird die
+$C_2(f)$-Funktion gleich 1 gesetzt und nach f aufgelöst.
 
+\[
+    f_c = \sqrt{\frac{1}{4 \pi^2 R_2^2 C^2}} = \sqrt{\frac{1}{4 \pi^2 \cdot (10k\Omega)^2 \cdot (10nF)^2}} = 1591,549 Hz
+\]
 
-\subsection{Schaltungsaufbau}
+Die Frequenzen werden in drei Bereiche eingeteilt: \par
 
-\section{Versuchsdurchführung}
+Frequenzbereich 1 FB1: $f \ll f_c$ 
+
+\[
+    |A_V| = \frac{R_2}{R_1} = \frac{}{} = 10
+\]
+
+Frequenzbereich 2 FB2: $ 0,25f_c < f < 4f_c$ \par
+Untergrenze: 0,25f\textsubscript{c} = 397,887 Hz $\rightarrow$ $A_V = 9,7$ \par 
+0,5f\textsubscript{c} = 795,774 Hz $\rightarrow$ $A_V = 8,9$ \par
+2f\textsubscript{c} = 3183,096 Hz $\rightarrow$ $A_V = 4,5$ \par
+Obergrenze: 4f\textsubscript{c} = 6366,196 Hz $\rightarrow$ $A_V = 2,4$ \par
+
+Frequenzbereich 3 FB3: $f \gg f_c$ \par
+\[
+    |A_V| =\frac{1}{2 \pi f R_1 C} = \frac{1}{2 \pi \cdot 1k\Omega \cdot 10nF} = 15915,49 \frac{1}{F \Omega}\frac{1}{Hz}
+\]  
+
+Man zeichnet diese Werte in den Graphen:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=8cm]{images/Versuch6/Graph_Spannungsverstaerkung.png} 
+    \caption{Graph}
+    \label{fig: Graph}
+\end{figure}
+
+\subsection{Fehlerrechnung}
+
+$\frac{\Delta R_1}{R_1} = \frac{\Delta R_2}{R_2} = 5\%$, $\frac{\Delta C}{C} = 10\%$ \par
+
+FB1: $|A_V| = \frac{R_2}{R_1}$
+
+\[
+    \begin{aligned}
+        \Delta |A_{V, worst}| & = |\frac{\partial A_V}{\partial R_1} \cdot \Delta R_1| +
+        |\frac{\partial A_V}{\partial R_2} \cdot \Delta R_2| = |- \frac{R_2}{R_1^2} \cdot \Delta R_1|
+        + |\frac{1}{R_1} \cdot \Delta R_2| = \frac{R_2}{R_1} \cdot \frac{\Delta R_1}{R_1} + 
+        \frac{R_2}{R_1} \cdot \frac{\Delta R_2}{R_2} \\
+        & = A_V \cdot (\frac{\Delta R_1}{R_1} + \frac{\Delta R_2}{R_2}) = 
+        10 \cdot (5\% + 5\%) = 1
+    \end{aligned}
+\]
+
+\[
+    |\frac{\Delta A_V}{A_V}| = \frac{\Delta R_1}{R_1} + \frac{\Delta R_2}{R_2} = 10\%
+\]
+
+FB3: $|A_V| = \frac{1}{2 \pi f R_1 C}$
+
+\[
+    \begin{aligned}
+        \Delta |A_{V, worst}| & = 
+        |\frac{\partial A_V}{\partial R_1} \cdot \Delta R_1| + |\frac{\partial A_V}{\partial C} \cdot \Delta C| 
+        = |-\frac{1}{2 \pi f R_1^2 C} \cdot \Delta R_1| +
+        |-\frac{1}{2 \pi f R_1 C^2} \cdot \Delta C| \\
+        & = \frac{1}{2 \pi f R_1 C} \cdot (\frac{\Delta R_1}{R_1} + \frac{\Delta C}{C}) 
+        = A_V \cdot (\frac{\Delta R_1}{R_1} + \frac{\Delta C}{C}) = 
+        A_V \cdot (5\% + 10\%) = A_V \cdot 15\%
+    \end{aligned}
+\]
+
+\[
+    |\frac{\Delta A_V}{A_V}| = 15\%
+\]
+
+\section{Messungen}
+Man baut die Schaltung aus Abbildung \ref{fig: Schaltungsskizze} auf.
+Für den Eingangssignal u\textsubscript{e} wird ein Sinussignal
+(da nach Fourier jedes Signal aus Sinussignalen zusammengesetzt ist)
+mit einer Amplitude von 2V (gemessen 1,94V) verwendet. 
+Man misst die Ausgangsspannung u\textsubscript{a} in Abhängigkeit
+der Frequenz f im 1:2:5 Muster. Die Frequenz wird von 10Hz bis 
+100kHz variiert. Die Eingangsspannung u\textsubscript{e} beträgt
+1,94V. Die Messwerte sind in der folgenden Tabelle aufgelistet:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=10cm]{images/Versuch6/Tabelle.pdf} 
+    \caption{Messwerte}
+    \label{fig: Messwerte}
+\end{figure}
+
+\section{Auswertung}
+Die Verstärkung sinkt um $\sqrt{2}$ ($\frac{10V}{\sqrt{2}} = 7,071V$) bei 1520Hz.
+Differenz (absolut): $1591,549Hz - 1520Hz = 71,549Hz$
+Differenz (prozentual): $\frac{71,549}{1591,549} = 4,49\%$
+
+Die Verstärkung erreicht den Wert 1 bei der Transitfrequenz. Diese
+beträgt (gemessen) 16200Hz.
+
+Rechnerisch: 
+\[
+    \frac{1}{\sqrt{4 \pi^2 f^2 C^2 R_1^2 + (\frac{R_1}{R_2})}} = 1 \rightarrow f = 15835,72Hz
+\]
+
+Alle gemessenen Werte liegen innerhalb des Toleranzbandes.
+Es ist zu erwarten, dass alle gemessenen Werte innerhalb der 
+Fehlergrenzen liegen, denn der berechnete fehler ist der 
+worst case Fehler.
