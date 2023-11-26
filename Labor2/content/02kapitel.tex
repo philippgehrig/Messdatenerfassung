@@ -1,131 +1,187 @@
-\chapter{Versuch 2: Passiver Zweipol}
-\section{Einleitung}
-Ziel dieses Versuch ist es von einem unbekannten Bauteil (BlackBox 3) zunächst
-die Art der Bauteile zu bestimmen. Anschließend soll die Anordung der Bauteile
-innerhalb der BlackBox bestimmt werden. Des weiteren wurde angegeben, dass es eine
-Kombination aus 2 der folgenden Bauteile ist:
-\begin{itemize}
-    \item Widerstand R
-    \item Kondensator C
-    \item Spule L
-\end{itemize}
-Des Weiteren wird eine Methode zur Korrektur von Verzerrungen untersucht.
+\chapter{Versuch 1: Kapazitätsmessung eines unbekannten Kondensators}
 
-\section{Benötigte Geräte}
+\section{Vorbereitung}
+\subsection{Benötigte Geräte}
+
+Für den Versuch werden folgende Geräte benötigt
 
 \begin{tabular}[h]{c|c}
-	Backbox 3 & unbekannt \\
+    Kondensators unbekannter Größe (1nF $\le$ C\textsubscript{x} $\le$ 10nF) \\
+    \hline
+    Widerstand 4,7 k$\Omega$& \\
     \hline
     Funktionsgenerator & T3AFG80\\
     \hline
     Digital-Multimeter & Fluke TRUE RNS MULTIMETER\\
     \hline
     Oszilloskop & Keysight DSOX1102A
-    \label{tab:Versuch 2: Geräte}
+    \label{tab:Versuch 1: Geräte}
 \end{tabular}
+
+\subsection{Ziel des Versuchs}
+Für einen unbekannten Kondensator in einer BlackBox ist ein Bereich der Kapazität
+1nF$\le$C\textsubscript{x}$\le$10nF angegeben. Ziel dieses Versuches ist es, 
+die Kapazität des Kondensators genau zu bestimmen und eine Fehlerrechnung durchzuführen.
+
+
 
 \section{Versuchsdurchführung}
-Der Vorwiderstand aus Versuch 1 wurde verwendet. Der ausgemessene Wert hierführ
-betrug R\textsubscript{v} = 4,583 k$\Omega$. Auch hier muss man wieder beachten, 
-dass der Widerstand des Funktionsgenerators hier hinzuaddiert werden muss. 
-Dieser beträgt R\textsubscript{i} = 50$\Omega$. Somit ergibt sich 
-R\textsubscript{v*} = 4,633 k$\Omega$.
 
-\subsection{Versuchsaufbau}
+
+\subsection{Ladekurve des Kondensators}
+Der Kondensator hat eine Ladekurve, die mit der Gleichung 
+\[U\textsubscript{C} = U\textsubscript{0} \left(1 - e^{-\frac{t}{\tau}}\right), \tau=RC\]
+beschrieben werden kann.\par
+Die Ladekurve sieht folgendermaßen aus: 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=7cm]{images/Versuch2/1_Schaltungsskizze.jpeg} 
-	\caption{Schaltungsskizze}
-	\label{fig: Schaltungsskizze}
+	\includegraphics[height=7cm]{images/Versuch1/Ladekurve_zeichnung.pdf} 
+	\caption{Ladekurve des Kondensators}
+	\label{fig: Ladekurve des Kondensators}
 \end{figure}
 
-\subsection{Bauteile bestimmen}
+Nach einem $\tau$ erreicht der Kondensator 62.3\% seiner maximalen Spannung. 
 
+\subsection{Erstellen einer Schaltung}
+
+Man erstellt eine Schaltung, mit der das Lade- und Entladeverhalten des Kondensators
+mit dem Oszilloskop beobachtet werden kann. Dafür wird der Frequenzgenerator
+durch den Vorwiderstand R\textsubscript{V} mit dem Kondensator verbunden.
+Die Messung erfolgt mit dem Oszilloskop parallel zum Kondensator, 
+die Masseklemme des Tastkopfs sollte möglichst nah an dem Frequenzgenerator
+platziert werden.
+
+Dadurch, dass man den Kondensator direkt mit U\textsubscript{max} aufladen
+muss, verwendet man den Rechtecksignal. Die Amplitude des Signals liege 
+im Intervall zwischen ca. 3 und 10 Vpp. Man verwendet hier kein Offset.
+Resümierend, entsteht hier folgende Schaltung:
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=7cm]{images/Versuch2/Zeitmessung_tau_10_8microsek.png} 
-	\caption{Zeitmessung Ladekurve des Kondensators}
-	\label{fig: Zeitmessung ladekurve des Kondensators}
-\end{figure}
-
-Durch das anschließen an das Oszilloskop wird ersichtlich, dass ein Bauteil ein 
-Kondensator ist. Nun wird durch eine Messung mit dem Digital-Multimeter das zweite
-Bauteil bestimmt. Dabei Messen wir einen Widerstand von 8,20k$\Omega$, sowie einen
-Spannungsabfall von 1,588V. 
-
-\begin{tabular}[h]{c|c|c|c}
-    \textbf{Bauteil 1} & \textbf{Verschaltungsart} & \textbf{Bauteil 2} & \textbf{Widerstand der BlackBox}\\
-    \hline
-    Kondensator & parallel & Spule & 0 \\
-    \hline
-    Kondensator & in Reihe & Spule & $\infty$ \\
-    \hline
-    Kondensator & parallel & Wiederstand & =Widerstand \\
-	\hline
-	Kondensator & in Reihe & Widerstand & $\infty$ 
-    \label{tab:Versuch 2: Bauteile bestimmen}
-\end{tabular}
-
-Da der Widerstand in der BlackBox nicht unendlich groß ist, kann es sich nicht um
-eine Schltung in Reihe handeln. Da der Widerstand in der BlackBox nicht 0 ist, kann
-es sich nicht um eine Parrallelschaltung mit einer Spule handeln. Somit muss es sich
-um eine Parrallelschaltung mit einem Widerstand handeln. Dieser Widertsand ist (s.o.) 
-$R\textsubscript{B}$ = 8,20k$\Omega$.
-Mit dem Widerstand und der Frequenz kann nun die Kapazität des Kondensators berechnet.
-Dafür verwendet man folgende Formeln:
-
-\begin{equation}
-	R\textsubscript{ges} = \frac{1}{\frac{1}{R\textsubscript{v*}} + 
-	\frac{1}{R\textsubscript{B}}}
-	\label{eq:Rges}
-\end{equation}
-
-mit Gleichung \ref*{eq:Rges} können wir nun R\textsubscript{ges} = 2,96k$\Omega$
-berechnen.
-$\tau$ = 10,8$\mu$s wurde am Oszilloskop abgelesen. Mit der Formel für die Kapazität
-(Gleichung \ref*{eq:C})
-\begin{equation}
-	C = \frac{\tau}{R\textsubscript{ges}}
-	\label{eq:C}
-\end{equation}
-können wir nun die C\textsubscript{B} = 3,648nF berechnen.
-
-
-\section{Verzerrung des Signals}
-\subsection{Schaltskizze}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[height=7cm]{images/Versuch2/2_Schaltungsskizze.jpeg} 
+	\includegraphics[height=5cm]{images/Versuch1/Schaltbild_versuch1.pdf} 
 	\caption{Schaltskizze}
-	\label{fig: Schaltungsskizze}
+	\label{fig: Schaltskizze}
 \end{figure}
 
-\subsection{Berchnung der Kapazität}
+Der nahezu vollständie Ladevorgang dauert ca. 5 $\tau$. Basierend darauf kann
+man den Intervall für die im Schaltung verwendete Frequenz berechnen:
 
-\begin{equation}
-	\frac{R\textsubscript{V}}{R\textsubscript{B}} = \frac{C\textsubscript{V}}{C\textsubscript{B}}
-	\label{eq:Cv}
-\end{equation}
+\[
+    f = \frac{1}{5\tau} \hspace{0.5cm} \text{mit} \hspace{0.2cm} \tau = RC
+\]
 
-Durch Auflösung der Geleichung \ref*{eq:Cv} nach C\textsubscript{V}
-erhalten wir: 
+Für C = 1 nF gilt:
+\[
+    \tau =4700 \Omega*10^{-9}F = 4,7*10^{-6}s
+\]
 
-\begin{equation}
-	C\textsubscript{V} = \frac{R\textsubscript{V}}{R\textsubscript{B}} \cdot C\textsubscript{B}
-	\label{eq:Cv2}
-\end{equation}
+Für C = 10 nF gilt:
+\[
+    \tau =4700 \Omega * 10*10^{-9}F = 4,7*10^{-5}s
+\]
 
-Durch das Hinzufügen eines weiteren Kondensators C\textsubscript{V} 
-wird U\textsubscript{V} \textasciitilde U\textsubscript{0}
-Mit den Werten auf 2.1 ergibt sich C\textsubscript{V} = 2,039nF.
+Somit gilt für die Frequenz: \[ f \in I=[4255Hz; 42553Hz] \]
+
+\subsection{Versuchsaufbau und Messung}
+Vor der Aufbau wird der im Versuchsberschreibung angegebene Wiederstand 
+von 4,7 k$\Omega$ mit dem Digital-Multimeter überprüft. Dieser liegt 
+mit 4,583 k$\Omega$ im Toleranzbereich von 5\%. 
+
+Mit dem BlackBox 27 baut man die Schaltung auf. Es resultiert folgende Anordung:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Versuch1_schaltung_gebaut.jpg} 
+	\caption{Schaltung}
+	\label{fig: Schaltung}
+\end{figure}
+
+In der Anordung wird ein Rechtecksignal mit der Frequenz 10 kHz, 
+der Amplitude 6 Vpp, keinem Offset und Duty 50\% verwendet.
+
+Es wird folgende Ladekurve am Oszilloskop beobachtet:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Ladekurve_voll_6021V.png} 
+	\caption{Ladekurve}
+	\label{fig: Ladekurve}
+\end{figure}
+
+Man beachte, dass trotz angestellter Amplitude in Höhe von
+6 Vpp, wird am Oszilloskop 6,21 V Amplitude angezeigt. Mit dieser 
+Information wird die Zeitkonstante $\tau$ berechnet. Man kalkuliert
+63,2\% von der Amplitude: $6,21V * 0,632 = 3,924V$. Man stellt die 
+Y-Cursor auf diese Spannung und misst mit den X-Cursor die Zeit:
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{images/Versuch1/Zeitmessung.png} 
+	\caption{Zeitmessung}
+	\label{fig: Zeitmessung}
+\end{figure}
+
+Es ergeben sich 7,08 $\mu$S für die Zeitkonstante $\tau$. Die
+Einstellungen des Oszilloskops sind folgende:
+y: 540 mV/div, x: 1,080 $\mu$s/div.
+
+\subsection{Bestimmung der Kapazität}
+
+Die Kapazität des Kondensators wird mit der Formel für die Zeitkonstante $\tau$
+berechnet:
+\[
+	\tau = R_{ges}C \Leftrightarrow C = \frac{\tau}{R}
+\], wobei $R_{ges}$ der Gesamtwiderstand der Schaltung ist
+($R_{ges} = R_{i} + R_{V} = 50\Omega + 4,583 k\Omega = 4,633 k\Omega$ ).
+Somit gilt für die Kapazität des Kondensators:
+\[
+	C = \frac{7,08 \mu s}{4,633 k\Omega} = 1,528 nF
+\]
+
+
+\section{Fehlerrechnung}
+
+
+\resizebox{\textwidth}{!}{%
+	\centering
+	\begin{tabular}{c|c|c|c|c|c}
+	Fehlerquelle                        					& Einfluss     		& Größe   					& Art         					& Berücksichtigen 							& Relevant            \\ \hline
+	R (4,7 k)                          						& DMM (Fluke 87)	& \textperthousand  		& statistisch 					& Fehlerrechnung  							& Ja                  \\ \hline
+	\multirow{5}{*}{Oszilloskop	(DSOX1102A) 7 Jahre alt}	& Ri           		& 10 M$\Omega$ $\pm 2\%$ 	& \multirow{2}{*}{systematisch} & \multirow{2}{*}{< 0,5 \textperthousand}   & \multirow{2}{*}{/}  \\ \cline{2-3}
+															& Ci           		& 16 pF $\pm 3pF$        	&             					&                 							&                     \\ \cline{2-6} 
+															& y            		& $\approx$ 3\%        		& \multirow{2}{*}{statistisch}  & \multirow{2}{*}{Fehlerrechnung}           & \multirow{2}{*}{Ja} \\ \cline{2-3} 
+															& x            		& nachrechnen!!!        	&             					&                							&                     \\ \cline{2-6} 
+															& Cursor       		& ablesen!!!        		& statistisch            		& Fehlerrechnung                			& Ja                  \\ \hline
+	\multirow{4}{*}{Funktionsgenerator} 					& Anstiegszeit		& $\approx$ ns       		& systematisch            		& $\approx$ 1 \textperthousand              & /                   \\ \cline{2-6} 
+															& Ri           		& 50 $\Omega$        		& systematisch            		& Korrektur                					& Ja                  \\ \cline{2-6} 
+															& $\Delta$Ri		& $\approx$ 1\%        		& statistisch            		& $\pm 0,5 \Omega$                			& /                   \\ \cline{2-6} 
+															& Amplitude/Offset	& Relativmessung!        	& Relativmessung!             	& /                							& /                   \\ \hline
+	Kabel und Steckverbindung           					& Widerstand   		& $\le$ 20m$\Omega$	        & systematisch            		& /                							& /              
+	\label{tab: Fehlerrechnung}
+
+\end{tabular}%
+}
+
+
+
 
 \section{Zusatzfragen}
 
-Das BNC Kabel addiert seine Kapazität parallel zur Schaltung.
-Zur Vermeidung sollte mit Tastköpfen gearbeitet werden.
+Durch das BNC Kabel und die Steckverbindung entsteht ein zusätzlicher 
+Widerstand von ca. 50 $\Omega$. Dieser Widerstand kann in der Fehlerrechnung
+kompensiert werden, indem man den Widerstand in der Schaltung um 50 $\Omega$
+kleiner auslegt.
 
+Wenn der Wert des Vorwiderstandes nicht gemessen wäre, sondern mit dem
+Nominalwert und Toleranz gerechnet werden würde, dann würde dies einen
+Einfluss auf die Kapazitätsmessung haben. Man rechne mit dem Nominalwert
+des Widerstandes und der Toleranz von 5\%:
 
+\[
+	R_{V} = 4,7 k\Omega \pm 5\% = 4,7 k\Omega \pm 235 \Omega
+\]
 
+Dieser Betrag ist größer als der gemessene Wert von 4,583 k$\Omega$.
+Dadurch erhöhrt sich der Gesamtwiderstand der Schaltung und somit
+auch der Fehler der Kapazitätsmessung:
 
+\[
+	\Delta C_1 = \frac{1}{4,7 k\Omega} \cdot  = 1,528 nF
+\]
