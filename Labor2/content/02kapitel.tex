@@ -1,5 +1,11 @@
 \chapter{Versuch 1: Kapazitätsmessung eines unbekannten Kondensators}
 
+\section{Einleitung}
+In diesem Versuch wird die Kapazität eines unbekannten Kondensators
+mit Hilfe eines Oszilloskops und eines Funktionsgenerators bestimmt.
+Anschließend wird eine Fehlerrechnung durchgeführt.
+
+
 \section{Vorbereitung}
 \subsection{Benötigte Geräte}
 
@@ -118,7 +124,7 @@ Y-Cursor auf diese Spannung und misst mit den X-Cursor die Zeit:
 	\label{fig: Zeitmessung}
 \end{figure}
 
-Es ergeben sich 7,08 $\mu$S für die Zeitkonstante $\tau$. Die
+Es ergeben sich 7,08 $\mu$s für die Zeitkonstante $\tau$. Die
 Einstellungen des Oszilloskops sind folgende:
 y: 540 mV/div, x: 1,080 $\mu$s/div.
 
@@ -128,7 +134,7 @@ Die Kapazität des Kondensators wird mit der Formel für die Zeitkonstante $\tau
 berechnet:
 \[
 	\tau = R_{ges}C \Leftrightarrow C = \frac{\tau}{R}
-\], wobei $R_{ges}$ der Gesamtwiderstand der Schaltung ist
+\] wobei $R_{ges}$ der Gesamtwiderstand der Schaltung ist
 ($R_{ges} = R_{i} + R_{V} = 50\Omega + 4,583 k\Omega = 4,633 k\Omega$ ).
 Somit gilt für die Kapazität des Kondensators:
 \[
@@ -139,16 +145,25 @@ Somit gilt für die Kapazität des Kondensators:
 \section{Fehlerrechnung}
 
 
+Fluke 87, Bereich 6k$\Omega$: $\pm[0,02\% + 1 Digit] = \pm[0,02\% \cdot 4583\Omega + 1 Digit] = 0,9166\Omega + 1 Digit = \pm 1,9166\Omega$\par
+Full Scale Range: 8 Divs * 540mV = 4,32V\par
+Cursorgenauigkeit (dual cursor accuracy): $\pm[3\% + 0,5\% \cdot Full Scale Range] = \pm[3\% + 0,5\% \cdot 4,32V] = \pm 0,0516V = \pm 51,6mV$\par
+Screen width: 10 Divs $\cdot$ 1,08 $\mu s$ = 10,8$\mu s$\par
+$\Delta$ time accuracy (using cursors): $\pm$[(time base accuracy $\cdot$ reading) $\pm$ (0,0016 $\cdot$ screen width) $\pm$ 200ps] = 
+$\pm [85ppm\footnote{Parts per million = $1\cdot10^{-6}$} \cdot 7,08 \mu S + 0,0016 \cdot 10,8 \mu s + 200 ps] = \pm 18,081ns$ \par
+x Genauigkeit: $\pm$ 18,081ns\par
+
 \resizebox{\textwidth}{!}{%
 	\centering
 	\begin{tabular}{c|c|c|c|c|c}
 	Fehlerquelle                        					& Einfluss     		& Größe   					& Art         					& Berücksichtigen 							& Relevant            \\ \hline
-	R (4,7 k)                          						& DMM (Fluke 87)	& \textperthousand  		& statistisch 					& Fehlerrechnung  							& Ja                  \\ \hline
-	\multirow{5}{*}{Oszilloskop	(DSOX1102A) 7 Jahre alt}	& Ri           		& 10 M$\Omega$ $\pm 2\%$ 	& \multirow{2}{*}{systematisch} & \multirow{2}{*}{< 0,5 \textperthousand}   & \multirow{2}{*}{/}  \\ \cline{2-3}
+	R (4,7 k)                          						& DMM (Fluke 87)	& $\pm$ 1,9166$\Omega$ 		& statistisch 					& Fehlerrechnung  							& Ja                  \\ \hline
+	\multirow{6}{*}{Oszilloskop	(DSOX1102A) 7 Jahre alt}	& Ri           		& 10 M$\Omega$ $\pm 2\%$ 	& \multirow{2}{*}{systematisch} & \multirow{2}{*}{< 0,5 \textperthousand}   & \multirow{2}{*}{/}  \\ \cline{2-3}
 															& Ci           		& 16 pF $\pm 3pF$        	&             					&                 							&                     \\ \cline{2-6} 
 															& y            		& $\approx$ 3\%        		& \multirow{2}{*}{statistisch}  & \multirow{2}{*}{Fehlerrechnung}           & \multirow{2}{*}{Ja} \\ \cline{2-3} 
-															& x            		& nachrechnen!!!        	&             					&                							&                     \\ \cline{2-6} 
-															& Cursor       		& ablesen!!!        		& statistisch            		& Fehlerrechnung                			& Ja                  \\ \hline
+															& x            		& 18,081ns		        	&             					&                							&                     \\ \cline{2-6} 
+															& Cursorgenauigkeit & $\pm 51,6mV$        		& statistisch            		& Fehlerrechnung                			& Ja                  \\ \cline{2-6}
+															& Time base accuracy& 50ppm+7$\cdot$5ppm = 85ppm& statistisch            		& Fehlerrechnung                			& Ja                  \\ \hline
 	\multirow{4}{*}{Funktionsgenerator} 					& Anstiegszeit		& $\approx$ ns       		& systematisch            		& $\approx$ 1 \textperthousand              & /                   \\ \cline{2-6} 
 															& Ri           		& 50 $\Omega$        		& systematisch            		& Korrektur                					& Ja                  \\ \cline{2-6} 
 															& $\Delta$Ri		& $\approx$ 1\%        		& statistisch            		& $\pm 0,5 \Omega$                			& /                   \\ \cline{2-6} 
@@ -159,7 +174,39 @@ Somit gilt für die Kapazität des Kondensators:
 \end{tabular}%
 }
 
+$\Delta \tau_u$: \\
+Für die Ladekurve gilt: $u(t) = U_0 \cdot (1 - e^{-\frac{t}{\tau}})$\\
+Dann gilt für die Steigung: $\frac{\partial U}{\partial t} =\frac{U_0}{\tau} \cdot e^{-\frac{t}{\tau}}$, t = $\tau$ = $\frac{U_0}{e\tau} = \frac{6,21V}{e\cdot7,08\mu s} = 322,67\frac{V}{ms}$\\
+Somit ist der Beitrag zur horizontalen Messungenaugikeit: $\Delta \tau_u = \frac{51,6mV}{322,67\frac{V}{ms}} = 159,91 ns$\\
 
+Daraus folgt: $\Delta t = \pm (159,91 + 18,081)ns = \pm 177,991 ns$
+
+Messergebnis: $\tau = (7,08 \pm 0,177991) \mu s = 7,08 \mu s \pm 2,51\%$\\
+
+Mit dieser Information kann jetzt maximaler und wahrscheinlicher Fehler der Kapazitätsmessung berechnet werden:\\
+Maximaler Fehler:\\ 
+Absolut: 
+\[
+	\Delta C_{1} = |\frac{1}{R} \cdot \Delta \tau| + |- \frac{\tau}{R^2} \cdot \Delta R| = 
+	(\frac{1}{4633 \Omega} \cdot 177,91 ns) + (\frac{7,08 \mu s}{(4633 \Omega)^2} \cdot 1,9166 \Omega)
+	= 39,032 pF
+\]\\
+Relativ: 
+\[
+	\Delta C_{1} = \frac{\Delta C_{1}}{C_{1}} = \frac{39,032 pF}{1,528 nF} = 2,55\%
+\]
+
+Wahrscheinlicher Fehler:\\
+Absolut: 
+\[
+	\Delta C_{2} = \sqrt{(\frac{1}{R} \cdot \Delta \tau)^2 + (- \frac{\tau}{R^2} \cdot \Delta R)^2} =
+\sqrt{(\frac{1}{4633 \Omega} \cdot 177,91 ns)^2 + (- \frac{7,08 \mu s}{(4633 \Omega)^2} \cdot 1,9166 \Omega)^2}
+= 38,4 pF
+\]\\
+Relativ: 
+\[
+	\Delta C_{2} = \frac{\Delta C_{2}}{C_{1}} = \frac{38,4 pF}{1,528 nF} = 2,51\%
+\]\\
 
 
 \section{Zusatzfragen}
@@ -178,10 +225,21 @@ des Widerstandes und der Toleranz von 5\%:
 	R_{V} = 4,7 k\Omega \pm 5\% = 4,7 k\Omega \pm 235 \Omega
 \]
 
-Dieser Betrag ist größer als der gemessene Wert von 4,583 k$\Omega$.
+Dieser Betrag ist deutlich größer als in der Rechnung.
 Dadurch erhöhrt sich der Gesamtwiderstand der Schaltung und somit
 auch der Fehler der Kapazitätsmessung:
 
 \[
-	\Delta C_1 = \frac{1}{4,7 k\Omega} \cdot  = 1,528 nF
+	\Delta C_{1} = (\frac{1}{4700 \Omega} \cdot 177,91 ns) + (\frac{7,08 \mu s}{(4700 \Omega)^2} \cdot 235 \Omega)
+	= 113,17 pF
 \]
+
+\[
+	\Delta C_{2} = \sqrt{(\frac{1}{R} \cdot \Delta \tau)^2 + (- \frac{\tau}{R^2} \cdot \Delta R)^2} =
+	\sqrt{(\frac{1}{4700 \Omega} \cdot 177,91 ns)^2 + (- \frac{7,08 \mu s}{(4700 \Omega)^2} \cdot 235 \Omega)^2}
+	= 84,29 pF
+\]\\
+
+Man erkennt, dass der Fehler der Kapazitätsmessung deutlich größer ist,
+denn die Toleranzangaben des Widerstandes viel größer sind als der
+eigentliche Fehler des Widerstandes. 
